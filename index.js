@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
 
+
 const manager = [
     {
         type: 'input',
@@ -23,7 +24,12 @@ const manager = [
         name: 'officeNumber',
         message: 'enter office number',
     },
-
+    {
+        type: 'list',
+        name: 'newEmployee',
+        message: 'please select from the following:',
+        choices: ['add new Endineer', 'add new Intern', 'fnish building my team']
+    },
 ]
 const engineer = [
     {
@@ -46,7 +52,12 @@ const engineer = [
         name: 'github',
         message: 'enter your github username',
     },
-
+    {
+        type: 'list',
+        name: 'newEmployee',
+        message: 'please select from the following:',
+        choices: ['add new Endineer', 'add new Intern', 'fnish building my team']
+    },
 ]
 const intern = [
     {
@@ -69,5 +80,10 @@ const intern = [
         name: 'school',
         message: 'enter the name of the school you attended',
     },
-
+    {
+        type: 'list',
+        name: 'newEmployee',
+        message: 'please select from the following:',
+        choices: ['add new Endineer', 'add new Intern', 'fnish building my team']
+    },
 ]
