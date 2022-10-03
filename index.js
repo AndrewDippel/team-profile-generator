@@ -25,3 +25,49 @@ const manager = [
     },
 
 ]
+const engineer = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'enter managers name',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'employee ID?',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'enter your email',
+    },
+    {
+        type: 'input',
+        name: 'github',
+        message: 'enter your github username',
+    },
+
+]
+const intern = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'enter managers name',
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'employee ID?',
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'enter your email',
+    },
+    {
+        type: 'input',
+        name: 'school',
+        message: 'enter the name of the school you attended',
+    },
+
+]
