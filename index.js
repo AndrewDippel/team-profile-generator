@@ -1,8 +1,22 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
+const render = require('./src/page-template.js')
+const manager = require('./lib/manager.js');
+const engineer = require('./lib/engineer.js');
+const intern = require('./lib/intern.js');
+
+console.log('Use `npm run reset` to reset the team')
+
+class employee {
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
 
 
+}
 const manager = [
     {
         type: 'input',
