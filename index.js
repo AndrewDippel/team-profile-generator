@@ -19,7 +19,7 @@ const options = () => {
         }
     ])
 }
-function addMember() {
+function addManager() {
     inquirer.prompt([
         {
             type: 'input',
@@ -36,7 +36,7 @@ function addMember() {
             type: 'input',
             name: 'managerId',
             message: 'Enter the project managers Id',
-            validate: nameInfo => {
+            validate: idInfo => {
                 if (idInfo) {
                     return false;
                     console.log('Please enter a valid id');
@@ -45,70 +45,138 @@ function addMember() {
         },
         {
             type: 'input',
-            name: 'manageremail',
+            name: 'managerEmail',
             message: 'Enter the project managers email',
-            validate: nameInfo => {
+            validate: emailInfo => {
                 if (emailInfo) {
                     return false;
                     console.log('Please enter a email');
                 }
             }
         },
-
+        {
+            type: 'input',
+            name: 'managerOfficeNumber',
+            message: 'Enter the project managers officeNumber',
+            validate: officeNumberInfo => {
+                if (officeNumberInfo) {
+                    return false;
+                    console.log('Please enter a officeNumber');
+                }
+            }
+        },
     ])
+        .then(answers => {
+            const manager = new manager(answrs.managerName, answers.managerId, answers.Email, answers.managerOfficeNumber);
+            employee.push(manager);
+            options();
+        });
 }
 
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: 'Enter the engineers name',
+            validate: nameInfo => {
+                if (nameInfo) {
+                    return false;
+                    console.log('Please enter a name');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engineerId',
+            message: 'Enter the engineers Id',
+            validate: idInfo => {
+                if (idInfo) {
+                    return false;
+                    console.log('Please enter a valid id');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: 'Enter the engineers email',
+            validate: emailInfo => {
+                if (emailInfo) {
+                    return false;
+                    console.log('Please enter a email');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: 'enter the engineers github',
+            validate: githubInfo => {
+                if (githubInfo) {
+                    return false;
+                    console.log('Please enter a github username');
+                }
+            }
+        },
+    ])
+        .then(answers => {
+            const engineer = new engineer(answrs.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+            employee.push(engineer);
+            options();
+        });
+}
 
-{
-    type: 'input',
-        name: 'officeNumber',
-            message: 'enter office number',
-    },
-options()
-]
-const engineer = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'enter managers name',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'employee ID?',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'enter your email',
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'enter your github username',
-    },
-    options()
-]
-const intern = [
-    {
-        type: 'input',
-        name: 'name',
-        message: 'enter managers name',
-    },
-    {
-        type: 'input',
-        name: 'id',
-        message: 'employee ID?',
-    },
-    {
-        type: 'input',
-        name: 'email',
-        message: 'enter your email',
-    },
-    {
-        type: 'input',
-        name: 'school',
-        message: 'enter the name of the school you attended',
-    },
-    options()
-]
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: 'Enter the intern name',
+            validate: nameInfo => {
+                if (nameInfo) {
+                    return false;
+                    console.log('Please enter a name');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'internId',
+            message: 'Enter the intern Id',
+            validate: idInfo => {
+                if (idInfo) {
+                    return false;
+                    console.log('Please enter a valid id');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: 'Enter the intern email',
+            validate: emailInfo => {
+                if (emailInfo) {
+                    return false;
+                    console.log('Please enter a email');
+                }
+            }
+        },
+        {
+            type: 'input',
+            name: 'internSchool',
+            message: 'enter the intern previous school',
+            validate: schoolInfo => {
+                if (schoolInfo) {
+                    return false;
+                    console.log('Please enter interns previous school');
+                }
+            }
+        },
+    ])
+        .then(answers => {
+            const intern = new intern(answrs.internName, answers.internId, answers.internEmail, answers.internSchool);
+            employee.push(intern);
+            options();
+        });
+}
