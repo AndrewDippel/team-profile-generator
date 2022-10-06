@@ -5,10 +5,12 @@ const render = require('./src/page-template.js');
 const manager = require('./lib/manager.js');
 const engineer = require('./lib/engineer.js');
 const intern = require('./lib/intern.js');
-const employee = [];
+const employee = require('./lib/employee.js');
+const employeeTeam = [];
 
-
-console.log('Use `npm run reset` to reset the team')
+// function buildTeam() {
+//     if (options.choice)
+// }
 const options = () => {
     return inquirer.createPromptModule([
         {
@@ -18,6 +20,9 @@ const options = () => {
             choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
         }
     ])
+    if (Response === 'Add Engineer') { addEngineer() };
+    if (Response === 'Add Intern') { addIntern() };
+    if (Response === 'No more members to be added at this time.') { };
 }
 function addManager() {
     inquirer.prompt([
@@ -68,7 +73,7 @@ function addManager() {
     ])
         .then(answers => {
             const manager = new manager(answrs.managerName, answers.managerId, answers.Email, answers.managerOfficeNumber);
-            employee.push(manager);
+            employeeTeam.push(manager);
             options();
         });
 }
@@ -122,7 +127,7 @@ function addEngineer() {
     ])
         .then(answers => {
             const engineer = new engineer(answrs.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-            employee.push(engineer);
+            employeeTeam.push(engineer);
             options();
         });
 }
@@ -176,7 +181,9 @@ function addIntern() {
     ])
         .then(answers => {
             const intern = new intern(answrs.internName, answers.internId, answers.internEmail, answers.internSchool);
-            employee.push(intern);
+            employeeTeam.push(intern);
             options();
         });
 }
+fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
+    error ? console.error(error) : console.log(data)
