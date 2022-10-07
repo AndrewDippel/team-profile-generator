@@ -1,16 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-const render = require('./src/page-template.js');
-const manager = require('./lib/manager.js');
-const engineer = require('./lib/engineer.js');
-const intern = require('./lib/intern.js');
-const employee = require('./lib/employee.js');
+const render = require('./src/page-template');
+const manager = require('./lib/manager');
+const engineer = require('./lib/engineer');
+const intern = require('./lib/intern');
+const employee = require('./lib/employee');
 const employeeTeam = [];
 
-// function buildTeam() {
-//     if (options.choice)
-// }
+addManager();
 const options = () => {
     return inquirer.createPromptModule([
         {
@@ -22,7 +20,7 @@ const options = () => {
     ])
     if (Response === 'Add Engineer') { addEngineer() };
     if (Response === 'Add Intern') { addIntern() };
-    if (Response === 'No more members to be added at this time.') { };
+    if (Response === 'No more members to be added at this time.') { generateFile() };
 }
 function addManager() {
     inquirer.prompt([
@@ -185,5 +183,7 @@ function addIntern() {
             options();
         });
 }
-fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
-    error ? console.error(error) : console.log(data)
+function generateFile() {
+    fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
+        error ? console.error(error) : console.log(data));
+}
