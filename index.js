@@ -11,10 +11,10 @@ const employeeTeam = [];
 
 function init() {//function to initialize project
     addManager();
-    options();
+
 }
 //function to display option or adding intern, engineer or finish building your team
-function options {
+function options() {
     return inquirer.prompt([
         {
             type: 'list',
@@ -23,9 +23,11 @@ function options {
             choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
         }
     ])
-    if (Response === 'Add Engineer') { addEngineer() };
-    if (Response === 'Add Intern') { addIntern() };
-    if (Response === 'No more members to be added at this time.') { generateFile() };
+        .then(val => {
+            if (Response === 'Add Engineer') { addEngineer() };
+            if (Response === 'Add Intern') { addIntern() };
+            if (Response === 'No more members to be added at this time.') { generateFile() };
+        })
 }
 function addManager() {
     inquirer.prompt([
