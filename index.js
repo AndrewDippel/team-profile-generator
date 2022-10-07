@@ -1,4 +1,5 @@
 const fs = require('fs');
+const jest = require('jest')
 const path = require('path');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
@@ -162,8 +163,8 @@ function addEngineer() {
         },
     ])
         .then((answers) => {
-            const Engineer = new engineer(`${answers.engineerName}, ${answers.engineerId}, ${answers.engineerEmail}, ${answers.engineerGithub}`);
-            employeeTeam.push(engineer);
+            const newEngineer = new Engineer(`${answers.engineerName}, ${answers.engineerId}, ${answers.engineerEmail}, ${answers.engineerGithub}`);
+            employeeTeam.push(newengineer);
             options();
         });
 }
@@ -228,8 +229,8 @@ function addIntern() {
         },
     ])
         .then((answers) => {
-            const Intern = new intern(`${answers.internName}, ${answers.internId}, ${answers.internEmail}, ${answers.internSchool}`);
-            employeeTeam.push(intern);
+            const newIntern = new Intern(`${answers.internName}, ${answers.internId}, ${answers.internEmail}, ${answers.internSchool}`);
+            employeeTeam.push(newintern);
             options();
         });
 }
