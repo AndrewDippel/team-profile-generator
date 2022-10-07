@@ -6,21 +6,33 @@ const manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 const employee = require('./lib/employee');
-const employeeTeam = [];
 
-addManager();
-const options = () => {
-    return inquirer.createPromptModule([
-        {
-            type: 'list',
-            name: 'addworker',
-            message: 'please select one of the following',
-            choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
-        }
-    ])
-    if (Response === 'Add Engineer') { addEngineer() };
-    if (Response === 'Add Intern') { addIntern() };
-    if (Response === 'No more members to be added at this time.') { generateFile() };
+function init() {
+    addManager();
+    options();
+}
+class options {
+    constructor() {
+        this.employeeTeam = [];
+    }
+    returns
+
+    getEmployeeTeam() {
+        return this.employeeTeam;
+    }
+    workerSelector() {
+        return inquirer.prompt([
+            {
+                type: 'list',
+                name: 'addworker',
+                message: 'please select one of the following',
+                choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
+            }
+        ])
+        if (Response === 'Add Engineer') { addEngineer() };
+        if (Response === 'Add Intern') { addIntern() };
+        if (Response === 'No more members to be added at this time.') { generateFile() };
+    }
 }
 function addManager() {
     inquirer.prompt([
@@ -81,11 +93,13 @@ function addManager() {
             }
         },
     ])
-        .then(answers => {
-            const manager = new manager(answrs.managerName, answers.managerId, answers.Email, answers.managerOfficeNumber);
-            employeeTeam.push(manager);
-            options();
+        .then((answers) => {
+            const teamManager = new Manager(`${answers.managerName}, ${answers.managerId}, ${answers.Email}, ${answers.managerOfficeNumber}`);
+            console.log(teamManager);
+            employeeTeam.push(teamManager);
         });
+
+
 }
 
 function addEngineer() {
@@ -147,8 +161,8 @@ function addEngineer() {
             }
         },
     ])
-        .then(answers => {
-            const engineer = new engineer(answrs.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        .then((answers) => {
+            const Engineer = new engineer(`${answers.engineerName}, ${answers.engineerId}, ${answers.engineerEmail}, ${answers.engineerGithub}`);
             employeeTeam.push(engineer);
             options();
         });
@@ -213,8 +227,8 @@ function addIntern() {
             }
         },
     ])
-        .then(answers => {
-            const intern = new intern(answrs.internName, answers.internId, answers.internEmail, answers.internSchool);
+        .then((answers) => {
+            const Intern = new intern(`${answers.internName}, ${answers.internId}, ${answers.internEmail}, ${answers.internSchool}`);
             employeeTeam.push(intern);
             options();
         });
@@ -223,3 +237,5 @@ function generateFile() {
     fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
         error ? console.error(error) : console.log(data));
 }
+
+init()
