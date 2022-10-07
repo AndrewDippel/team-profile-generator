@@ -30,6 +30,9 @@ function addManager() {
             message: 'Enter the project managers name',
             validate: nameInfo => {
                 if (nameInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a name');
                 }
@@ -41,6 +44,9 @@ function addManager() {
             message: 'Enter the project managers Id',
             validate: idInfo => {
                 if (idInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a valid id');
                 }
@@ -52,6 +58,9 @@ function addManager() {
             message: 'Enter the project managers email',
             validate: emailInfo => {
                 if (emailInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a email');
                 }
@@ -63,6 +72,9 @@ function addManager() {
             message: 'Enter the project managers officeNumber',
             validate: officeNumberInfo => {
                 if (officeNumberInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a officeNumber');
                 }
@@ -84,6 +96,9 @@ function addEngineer() {
             message: 'Enter the engineers name',
             validate: nameInfo => {
                 if (nameInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a name');
                 }
@@ -95,6 +110,9 @@ function addEngineer() {
             message: 'Enter the engineers Id',
             validate: idInfo => {
                 if (idInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a valid id');
                 }
@@ -106,6 +124,9 @@ function addEngineer() {
             message: 'Enter the engineers email',
             validate: emailInfo => {
                 if (emailInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a email');
                 }
@@ -117,6 +138,9 @@ function addEngineer() {
             message: 'enter the engineers github',
             validate: githubInfo => {
                 if (githubInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a github username');
                 }
@@ -138,6 +162,9 @@ function addIntern() {
             message: 'Enter the intern name',
             validate: nameInfo => {
                 if (nameInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a name');
                 }
@@ -149,6 +176,9 @@ function addIntern() {
             message: 'Enter the intern Id',
             validate: idInfo => {
                 if (idInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a valid id');
                 }
@@ -160,6 +190,9 @@ function addIntern() {
             message: 'Enter the intern email',
             validate: emailInfo => {
                 if (emailInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter a email');
                 }
@@ -171,6 +204,9 @@ function addIntern() {
             message: 'enter the intern previous school',
             validate: schoolInfo => {
                 if (schoolInfo) {
+                    return true;
+                }
+                else {
                     return false;
                     console.log('Please enter interns previous school');
                 }
