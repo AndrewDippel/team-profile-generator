@@ -7,33 +7,25 @@ const manager = require('./lib/manager');
 const engineer = require('./lib/engineer');
 const intern = require('./lib/intern');
 const employee = require('./lib/employee');
+const employeeTeam = [];
 
-function init() {
+function init() {//function to initialize project
     addManager();
     options();
 }
-class options {
-    constructor() {
-        this.employeeTeam = [];
-    }
-    returns
-
-    getEmployeeTeam() {
-        return this.employeeTeam;
-    }
-    workerSelector() {
-        return inquirer.prompt([
-            {
-                type: 'list',
-                name: 'addworker',
-                message: 'please select one of the following',
-                choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
-            }
-        ])
-        if (Response === 'Add Engineer') { addEngineer() };
-        if (Response === 'Add Intern') { addIntern() };
-        if (Response === 'No more members to be added at this time.') { generateFile() };
-    }
+//function to display option or adding intern, engineer or finish building your team
+function options {
+    return inquirer.prompt([
+        {
+            type: 'list',
+            name: 'addworker',
+            message: 'please select one of the following',
+            choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
+        }
+    ])
+    if (Response === 'Add Engineer') { addEngineer() };
+    if (Response === 'Add Intern') { addIntern() };
+    if (Response === 'No more members to be added at this time.') { generateFile() };
 }
 function addManager() {
     inquirer.prompt([
