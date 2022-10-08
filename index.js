@@ -3,6 +3,7 @@ const jest = require('jest')
 const path = require('path');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
+const generateHtml = require('./src/page-template');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -11,7 +12,6 @@ const employeeTeam = [];
 
 function init() {//function to initialize project
     addManager();
-
 }
 //function to display option or adding intern, engineer or finish building your team
 function options() {
@@ -241,8 +241,10 @@ function addIntern() {
         });
 }
 console.log(employeeTeam);
-function generateFile() {
-    fs.writeFile('team-profile.html')
-}
+
+const pageHtml = generateHtml(employeeTeam);
+fs.writefile('./output', 'team-profile.html'(err => {
+    if (err) { return console.error() }
+}))
 
 init()
