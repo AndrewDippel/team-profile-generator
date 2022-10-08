@@ -23,8 +23,8 @@ function options() {
             choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
         }
     ])
-        .then(data => {
-            switch (data.addWorker) {
+        .then(position => {
+            switch (position.addWorker) {
                 case 'Add Engineer':
                     return addEngineer();
                 case 'Add Intern':
@@ -242,8 +242,7 @@ function addIntern() {
 }
 console.log(employeeTeam);
 function generateFile() {
-    fs.writeFile('team-profile.html', 'utf8', (error, data) =>
-        error ? console.error(error) : console.log('Thank you we are generating your team now.'));
+    fs.writeFile('team-profile.html')
 }
 
 init()
