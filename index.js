@@ -242,8 +242,8 @@ function addIntern() {
 }
 console.log(employeeTeam);
 function generateFile() {
-    fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
-        error ? console.error(error) : console.log(data));
+    fs.writeFile('team-profile.html', 'utf8', (error, data) =>
+        error ? console.error(error) : console.log('Thank you we are generating your team now.'));
 }
 
 init()
