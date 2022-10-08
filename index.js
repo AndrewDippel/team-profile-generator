@@ -1,9 +1,9 @@
 const fs = require('fs');
 const jest = require('jest')
 const path = require('path');
+const output = require('./output');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
-const generateHtml = require('./src/page-template');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -30,7 +30,7 @@ function options() {
                 case 'Add Intern':
                     return addIntern()
                 case 'No more members to be added at this time.':
-                    return generateFile()
+                    return buildTeam()
             }
         })
 
@@ -242,9 +242,11 @@ function addIntern() {
 }
 console.log(employeeTeam);
 
-const pageHtml = generateHtml(employeeTeam);
-fs.writefile('./output', 'team-profile.html'(err => {
-    if (err) { return console.error() }
-}))
+function buildTeam() {
+    if (!fs.existsSync(DIST_DIR)) {
+        fs.mkdirSync(DIST_DIR);
+    }
+    fs.writeFileSync(output, render(teamMembers), 'utf-8');
+}
 
 init()
