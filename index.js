@@ -3,10 +3,10 @@ const jest = require('jest')
 const path = require('path');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
-const manager = require('./lib/manager');
-const engineer = require('./lib/engineer');
-const intern = require('./lib/intern');
-const employee = require('./lib/employee');
+const Manager = require('./lib/manager');
+const Engineer = require('./lib/engineer');
+const Intern = require('./lib/intern');
+const Employee = require('./lib/employee');
 const employeeTeam = [];
 
 function init() {//function to initialize project
@@ -18,25 +18,31 @@ function options() {
     return inquirer.prompt([
         {
             type: 'list',
-            name: 'addworker',
+            name: 'addWorker',
             message: 'please select one of the following',
             choices: ['Add Engineer', 'Add Intern', 'No more members to be added at this time.']
         }
     ])
-        .then(val => {
-            if (Response === 'Add Engineer') { addEngineer() };
-            if (Response === 'Add Intern') { addIntern() };
-            if (Response === 'No more members to be added at this time.') { generateFile() };
+        .then(data => {
+            switch (data.addWorker) {
+                case 'Add Engineer':
+                    return addEngineer();
+                case 'Add Intern':
+                    return addIntern()
+                case 'No more members to be added at this time.':
+                    return generateFile()
+            }
         })
+
 }
 function addManager() {
     inquirer.prompt([
         {
             type: 'input',
-            name: 'managerName',
+            name: 'name',
             message: 'Enter the project managers name',
-            validate: nameInfo => {
-                if (nameInfo) {
+            validate: name => {
+                if (name) {
                     return true;
                 }
                 else {
@@ -47,10 +53,10 @@ function addManager() {
         },
         {
             type: 'input',
-            name: 'managerId',
+            name: 'id',
             message: 'Enter the project managers Id',
-            validate: idInfo => {
-                if (idInfo) {
+            validate: id => {
+                if (id) {
                     return true;
                 }
                 else {
@@ -61,10 +67,10 @@ function addManager() {
         },
         {
             type: 'input',
-            name: 'managerEmail',
+            name: 'email',
             message: 'Enter the project managers email',
-            validate: emailInfo => {
-                if (emailInfo) {
+            validate: email => {
+                if (email) {
                     return true;
                 }
                 else {
@@ -75,10 +81,10 @@ function addManager() {
         },
         {
             type: 'input',
-            name: 'managerOfficeNumber',
+            name: 'officeNumber',
             message: 'Enter the project managers officeNumber',
-            validate: officeNumberInfo => {
-                if (officeNumberInfo) {
+            validate: officeNumber => {
+                if (officeNumber) {
                     return true;
                 }
                 else {
@@ -89,10 +95,12 @@ function addManager() {
         },
     ])
         .then((answers) => {
-            const teamManager = new Manager(`${answers.managerName}, ${answers.managerId}, ${answers.Email}, ${answers.managerOfficeNumber}`);
-            console.log(teamManager);
+            const teamManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
             employeeTeam.push(teamManager);
-        });
+            console.log(teamManager);
+            console.log(employeeTeam);
+            options();
+        })
 
 
 }
@@ -157,8 +165,10 @@ function addEngineer() {
         },
     ])
         .then((answers) => {
-            const newEngineer = new Engineer(`${answers.engineerName}, ${answers.engineerId}, ${answers.engineerEmail}, ${answers.engineerGithub}`);
-            employeeTeam.push(newengineer);
+            const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+            employeeTeam.push(newEngineer);
+            console.log(newEngineer);
+            console.log(employeeTeam);
             options();
         });
 }
@@ -223,11 +233,14 @@ function addIntern() {
         },
     ])
         .then((answers) => {
-            const newIntern = new Intern(`${answers.internName}, ${answers.internId}, ${answers.internEmail}, ${answers.internSchool}`);
-            employeeTeam.push(newintern);
+            const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            employeeTeam.push(newIntern);
+            console.log(newIntern);
+            console.log(employeeTeam);
             options();
         });
 }
+console.log(employeeTeam);
 function generateFile() {
     fs.writeFile('team-viewer.html', 'utf8', (error, data) =>
         error ? console.error(error) : console.log(data));
