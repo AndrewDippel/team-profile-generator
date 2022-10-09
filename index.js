@@ -1,7 +1,6 @@
 const fs = require('fs');
 const jest = require('jest')
 const path = require('path');
-const output = require('./output');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
 const Manager = require('./lib/manager');
@@ -242,11 +241,12 @@ function addIntern() {
 }
 console.log(employeeTeam);
 
-function buildTeam() {
-    if (!fs.existsSync(DIST_DIR)) {
-        fs.mkdirSync(DIST_DIR);
-    }
-    fs.writeFileSync(output, render(teamMembers), 'utf-8');
+function buildTeam(fileName, employeeTeam) {
+    const generate = render(employeeTeam)
+    fs.writeFile(fileName, generate, function () {
+        console.log('your team is being generated!')
+    })
 }
+
 
 init()

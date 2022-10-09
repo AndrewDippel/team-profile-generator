@@ -1,4 +1,4 @@
-const engineer = require("../lib/engineer");
+const index = require('../index');
 
 const genManager = function (manager) {
     return
@@ -61,7 +61,7 @@ generateHtml = (data) => {
 
     for (let i = 0; i < data.length; i++) {
         const employee = data[i];
-        const position = employee.addWorker();
+        const position = employeeTeam;
 
         if (position === Manager) {
             const managerCrd = genManager(employee);
