@@ -1,13 +1,10 @@
 const fs = require('fs');
-const jest = require('jest')
-const path = require('path');
 const inquirer = require('inquirer');
 const render = require('./src/page-template');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
-const Employee = require('./lib/employee');
-const employeeTeam = [];
+const team = [];
 
 function init() {//function to initialize project
     addManager();
@@ -95,9 +92,9 @@ function addManager() {
     ])
         .then((answers) => {
             const teamManager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-            employeeTeam.push(teamManager);
+            team.push(teamManager);
             console.log(teamManager);
-            console.log(employeeTeam);
+            console.log(team);
             options();
         })
 
@@ -165,9 +162,9 @@ function addEngineer() {
     ])
         .then((answers) => {
             const newEngineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
-            employeeTeam.push(newEngineer);
+            team.push(newEngineer);
             console.log(newEngineer);
-            console.log(employeeTeam);
+            console.log(team);
             options();
         });
 }
@@ -233,16 +230,16 @@ function addIntern() {
     ])
         .then((answers) => {
             const newIntern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-            employeeTeam.push(newIntern);
+            team.push(newIntern);
             console.log(newIntern);
-            console.log(employeeTeam);
+            console.log(team);
             options();
         });
 }
-console.log(employeeTeam);
+console.log(team);
 
-function buildTeam(fileName, employeeTeam) {
-    const generate = render(employeeTeam)
+function buildTeam(fileName, team) {
+    const generate = render(team)
     fs.writeFile(fileName, generate, function () {
         console.log('your team is being generated!')
     })
@@ -250,3 +247,4 @@ function buildTeam(fileName, employeeTeam) {
 
 
 init()
+module.exports = options
