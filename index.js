@@ -1,9 +1,9 @@
 const fs = require('fs');
-const inquirer = require('inquirer');
-const render = require('./src/page-template');
-const Manager = require('./lib/manager');
-const Engineer = require('./lib/engineer');
-const Intern = require('./lib/intern');
+const inquirer = require('inquirer.js');
+const render = require('./src/page-template.js');
+const Manager = require('./lib/manager.js');
+const Engineer = require('./lib/engineer.js');
+const Intern = require('./lib/intern.js');
 const team = [];
 
 function init() {//function to initialize project

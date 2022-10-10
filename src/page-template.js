@@ -1,6 +1,7 @@
-const options = require('../index');
+const options = require('../index.js');
 
-function generateHtml(team) {
+function generateTeamHtml(team) {
+    console.log(team)
     if (team.getRole() === 'Manager') {
         return
         `<div class="col-4 mt-4">
@@ -73,9 +74,8 @@ const generatePage = function (team) {
         <div class="container">
             <div class="row justify-content-center"
             ${team.map(team => {
-        return generateHtml(team)
+        return generateTeamHtml(team)
     })}
-
             </div>
         </div>
     </main>
@@ -84,4 +84,4 @@ const generatePage = function (team) {
 </html>`;
 }
 
-module.exports = generateHtml;
+module.exports = generatePage(team);
