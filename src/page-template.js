@@ -84,4 +84,4 @@ const generatePage = function (team) {
 </html>`;
 }
 
-module.exports = generatePage(team);
+module.exports = generatePage();
