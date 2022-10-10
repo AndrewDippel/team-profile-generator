@@ -1,60 +1,55 @@
-const options = require('../index.js');
-
-function generateTeamHtml(team) {
-    console.log(team)
-    if (team.getRole() === 'Manager') {
-        return
-        `<div class="col-4 mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="name">${team.name}</h2>
-                <h3><i class="bi bi-briefcase-fill">Manager</i></h3>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${team.id}</p>
-                <p class="email">Email: <a href="mailto:${team.email}">${manager.email}</a></p>
-                <p class="officeNumber">Office Number: ${team.officeNumber}</p>
-            </div>
-        </div>
-    </div>`;
+function generateMemberHtml(member) {
+    console.log(member)
+    if (member.getRole() === 'Manager') {
+        return `<div class="col-4 mt-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="name">${member.name}</h2>
+                            <h3><i class="bi bi-briefcase-fill">Manager</i></h3>
+                        </div>
+                        <div class="card-body">
+                            <p class="id">ID: ${member.id}</p>
+                            <p class="email">Email: <a href="mailto:${member.email}">${member.email}</a></p>
+                            <p class="officeNumber">Office Number: ${member.officeNumber}</p>
+                        </div>
+                    </div>
+                </div>`;
     }
-    if (team.getRole() === 'Engineer') {
-        return
-        `<div class="col-4 mt-4">
-        <div class="card">
-            <div class="card-header">
-                <h2 class="name">${team.name}</h2>
+    if (member.getRole() === 'Engineer') {
+        return `<div class="col-4 mt-4"></div>
+        <div class="card"></div>
+            <div class="card-header"></div>
+                <h2 class="name">${member.name}</h2>
                 <h3><i class="bi bi-tools">Engineer</i></h3>
             </div>
             <div class="card-body">
-                <p class="id">ID: ${team.id}</p>
-                <p class="email">Email: <a href="mailto:${team.email}">${engineer.email}</a></p>
-                <p class="github">Github: ${team.github}</p>
+                <p class="id">ID: ${member.id}</p>
+                <p class="email">Email: <a href="mailto:${member.email}">${engineer.email}</a></p>
+                <p class="github">Github: ${member.github}</p>
+                </div>
             </div>
-        </div>
-    </div>`;
+        </div>`;
     }
-    if (team.getRole() === 'Intern') {
-        return
-        `<div class="col-4 mt-4">
+    if (member.getRole() === 'Intern') {
+        return `<div class="col-4 mt-4">
         <div class="card">
             <div class="card-header">
-                <h2 class="name">${team.name}</h2>
+                <h2 class="name">${member.name}</h2>
                 <h3><i class="bi bi-mortarboard-fill">Intern</i></h3>
             </div>
             <div class="card-body">
-                <p class="id">ID: ${team.id}</p>
-                <p class="email">Email: <a href="mailto:${team.email}">${intern.email}</a></p>
-                <p class="github">School: ${team.school}</p>
+                <p class="id">ID: ${member.id}</p>
+                <p class="email">Email: <a href="mailto:${member.email}">${intern.email}</a></p>
+                <p class="github">School: ${member.school}</p>
+                </div>
             </div>
-        </div>
-    </div>`;
+        </div>`;
     }
 }
 
 const generatePage = function (team) {
-    return
-    `<!DOCTYPE html>
+    console.log(team)
+    return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -73,8 +68,8 @@ const generatePage = function (team) {
     <main>
         <div class="container">
             <div class="row justify-content-center"
-            ${team.map(team => {
-        return generateTeamHtml(team)
+            ${team.map(member => {
+        return generateMemberHtml(member)
     })}
             </div>
         </div>
@@ -84,4 +79,4 @@ const generatePage = function (team) {
 </html>`;
 }
 
-module.exports = generatePage();
+module.exports = generatePage;

@@ -1,6 +1,6 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const render = require('./src/page-template');
+const generatePage = require('./src/page-template');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
@@ -236,11 +236,13 @@ function addIntern() {
             options();
         });
 }
-console.log(team);
 
-function buildTeam(fileName, team) {
+
+function buildTeam() {
     // const generate = render(team)
-    fs.writeFile(fileName, render(team), function () {
+    console.log(team);
+    console.log(generatePage(team));
+    fs.writeFile('./dist/team.html', generatePage(team), function () {
         console.log('your team is being generated!')
     })
 }
