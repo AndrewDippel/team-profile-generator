@@ -1,5 +1,5 @@
 const fs = require('fs');
-const inquirer = require('inquirer.js');
+const inquirer = require('inquirer');
 const render = require('./src/page-template.js');
 const Manager = require('./lib/manager.js');
 const Engineer = require('./lib/engineer.js');
