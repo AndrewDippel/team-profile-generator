@@ -18,9 +18,9 @@ this project is great for any group project so you can easily generate basic con
 ## Contributing
 if you would like to contribute to this project clone the repo and commit changes for review
 ## Test
-to run test open terminal on test folder and type "npm test"
+to run test open terminal on __test__ folder and type "npm test"
 ## Questions
-Github: a.t.dippel@gmail.com
+Github: AndrewDippel 
 
-If you have any questions feel free to email me @:
-AndrewDippel
+If you have any questions feel free to email me @: a.t.dippel@gmail.com
+

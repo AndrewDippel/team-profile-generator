@@ -1,0 +1,12 @@
+.card-body {
+    background-color: rgb(25, 218, 228);
+}
+
+.card-header {
+    background-color: rgb(138, 150, 238);
+}
+
+.navbar {
+    background-color: rgb(164, 142, 188);
+    justify-content: center;
+}

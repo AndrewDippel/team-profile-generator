@@ -16,16 +16,16 @@ function generateMemberHtml(member) {
                 </div>`;
     }
     if (member.getRole() === 'Engineer') {
-        return `<div class="col-4 mt-4"></div>
-        <div class="card"></div>
-            <div class="card-header"></div>
+        return `<div class="col-4 mt-4">
+        <div class="card">
+            <div class="card-header">
                 <h2 class="name">${member.name}</h2>
                 <h3><i class="bi bi-tools">Engineer</i></h3>
             </div>
             <div class="card-body">
                 <p class="id">ID: ${member.id}</p>
-                <p class="email">Email: <a href="mailto:${member.email}">${engineer.email}</a></p>
-                <p class="github">Github: ${member.github}</p>
+                <p class="email">Email: <a href="mailto:${member.email}">${member.email}</a></p>
+                <p class="github">Github: <a href="https://github.com/${member.github}" target="_blank">${member.github}</a></p>
                 </div>
             </div>
         </div>`;
@@ -39,7 +39,7 @@ function generateMemberHtml(member) {
             </div>
             <div class="card-body">
                 <p class="id">ID: ${member.id}</p>
-                <p class="email">Email: <a href="mailto:${member.email}">${intern.email}</a></p>
+                <p class="email">Email: <a href="mailto:${member.email}">${member.email}</a></p>
                 <p class="github">School: ${member.school}</p>
                 </div>
             </div>
@@ -56,6 +56,7 @@ const generatePage = function (team) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel ="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
@@ -67,7 +68,7 @@ const generatePage = function (team) {
 
     <main>
         <div class="container">
-            <div class="row justify-content-center"
+            <div class="row justify-content-center">
             ${team.map(member => {
         return generateMemberHtml(member)
     })}
